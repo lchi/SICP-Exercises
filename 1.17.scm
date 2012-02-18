@@ -20,4 +20,18 @@
 	    (+ m 1)
 	    orig))))
   (mult (max x y) (- (min x y) 1) 1 (max x y)))
-  
+
+(define (even? x)
+  (= (remainder x 2) 0))
+(define (double x)
+  (+ x x))
+(define (halve x)
+  (/ x 2))
+
+(define (alt-mult a b)
+  (cond ((= b 1) a)
+	((even? b) (double (alt-mult 
+			    a 
+			    (halve b))))
+	(else (+ a (alt-mult a (- b 1))))))
+	
