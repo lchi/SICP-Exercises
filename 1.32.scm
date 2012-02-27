@@ -16,3 +16,10 @@
 
 (define (! x) 
   (accumulate * 1 identity 1 inc x))
+
+(define (accumulate-iter combiner null-value term a next b)
+  (define (accum-iter accumulated cur)
+    (if (> cur b)
+	(combiner accumulated null-value)
+	(accum-iter (combiner (term cur) accumulated) (next cur))))
+  (accum-iter null-value a))

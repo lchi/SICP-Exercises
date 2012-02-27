@@ -1,0 +1,2 @@
+(define (double func)
+  (func func)) 
